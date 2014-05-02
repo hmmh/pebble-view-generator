@@ -31,7 +31,7 @@ We organize our code into views and subviews. Views are basically containers for
 
 Every view has to be defined in an seperate pview file.
 
-![ScreenShot](https://raw.github.com/hmmh/pebble-view-generator/master/support/SyntaxHighlighting/pscript_syntax_demo.jpg)
+![ScreenShot](https://raw.githubusercontent.com/hmmh/pebble-view-generator/master/support/SyntaxHighlighting/pscript_syntax_demo.jpg)
 
 Running the ````pgenview```` command against our script will generate a _a_simple_demo_view.h_ header and an _a_simple_demo_view.c_ implementation file in the current working directory. Any existing files by that name will be overwritten.
 
