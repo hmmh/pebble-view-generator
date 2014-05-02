@@ -1,0 +1,44 @@
+//
+// this is a generated file, do not edit!
+//
+
+#include "{{name}}_view.h"
+
+#include "font_manager.h"
+
+{{#identifiers}}
+{{#subview}}
+#include "{{&name}}_view.h"
+{{/subview}}
+{{/identifiers}}
+
+Layer * {{name}}_view_get_layer( {{name_in_camel_case}}View * view )
+{
+	return view->{{root_layer_name}};
+}
+
+{{name_in_camel_case}}View * {{name}}_view_create({{#parameters}} {{parameters}} {{/parameters}})
+{
+	{{name_in_camel_case}}View *current = ({{name_in_camel_case}}View*)malloc( sizeof( {{name_in_camel_case}}View ) );
+
+	if ( ! current ) {
+        APP_LOG( APP_LOG_LEVEL_DEBUG, "{{name}}_view_create - failed to allocate memory for struct '{{name_in_camel_case}}View'." );
+		return NULL;
+	}
+
+	{{#creators}}	
+	{{&.}}
+	{{/creators}}
+
+	return current;
+}
+
+void {{name}}_view_destroy( {{name_in_camel_case}}View *current )
+{
+	// destroy all resources in inverse creation order
+	{{#destructors}}
+	{{&.}}
+	{{/destructors}}
+
+	free( current );
+}

@@ -1,0 +1,36 @@
+{
+  "name": "pgenview",
+  "private" : true,
+  "version": "0.0.1",
+  "bin": { "pgenview": "bin/pgenview-cli" },
+  "description": "View Code Generator for Pebble",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/hmmh/pebble-view-generator.git"
+  },  
+  "keywords": [
+    "pebble",
+    "generator",
+    "compiler",
+    "view"
+  ],
+  "author": {
+    "name" : "Florian Schaper",
+    "email" : "florian.schaper@hmmh.de",
+    "url" : "http://www.hmmh.de"
+  },
+  "bugs": {
+    "email": "florian.schaper@hmmh.de",
+    "url" : "https://github.com/hmmh/pebble-view-generator/issues"
+  }, 
+  "license": "MIT",
+  "engines": {
+    "node": ">=0.4"
+  },  
+  "devDependencies": {
+    "jison": "0.4.x"
+  },  
+  "dependencies": {
+    "mustache": "^0.8.1"
+  }
+}

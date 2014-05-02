@@ -1,0 +1,43 @@
+//
+// this is a generated file, do not edit!
+//
+
+#ifndef {{name}}_view_h
+#define {{name}}_view_h
+
+#include <pebble.h>
+
+{{#identifiers}}
+{{#subview}}
+struct {{&type}};
+{{/subview}}
+{{/identifiers}}
+
+typedef struct {{name_in_camel_case}}View {
+	{{#identifiers}}
+	{{#layer}}
+	Layer *{{.}};
+	{{/layer}}
+	{{#text}}
+	TextLayer *{{.}};
+	{{/text}}
+	{{#bitmap}}
+	BitmapLayer *{{.}};
+	GBitmap *bitmap_{{.}};
+	{{/bitmap}}
+	{{#font}}
+	GFont {{.}};
+	{{/font}}
+	{{#subview}}
+	struct {{&type}} *{{&name}};
+	{{/subview}}
+	{{/identifiers}}
+} {{name_in_camel_case}}View;
+
+Layer * {{name}}_view_get_layer( {{name_in_camel_case}}View * view );
+
+{{name_in_camel_case}}View * {{name}}_view_create({{#parameters}} {{parameters}} {{/parameters}});
+
+void {{name}}_view_destroy( {{name_in_camel_case}}View *current );
+
+#endif

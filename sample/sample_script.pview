@@ -1,0 +1,11 @@
+
+view as 'a_simple_demo' with parameters ( char * passed_text, void * some_data ) [
+	layer as 'container' (width:144 height:168 top:0 left:0) [
+		font RESOURCE_ID_MY_CUSTOM_FONT_17 as 'my_custom_font';
+		font FONT_KEY_GOTHIC_24_BOLD as 'font_gothic_24';
+		subview 'a_reference' with parameters ( passed_text, some_data ) as 'my_referenced_view';
+		bitmap RESOURCE_ID_IMAGE_XYZ as 'some_image' (width:14 height:13 top:8 left:4);
+		text "some text" as 'text_line1' (width:60 height:17 top:3 left:22) using font 'font_gothic_24' black;
+		text $passed_text as 'text_line2' (width:60 height:17 top:22 left:22) using font 'my_custom_font' black on clear;
+	]
+]

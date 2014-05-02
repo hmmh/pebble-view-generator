@@ -1,0 +1,7 @@
+// font '{{&name}}'
+{{#internal_font}}
+current->{{&name}} = fonts_get_system_font( {{resource_id}} ); 
+{{/internal_font}}
+{{^internal_font}}
+current->{{&name}} = fonts_load_custom_font_ex( {{resource_id}} );
+{{/internal_font}}

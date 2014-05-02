@@ -1,0 +1,10 @@
+// subview '{{&name}}'
+{	
+	current->{{&name}} = {{view_name}}_view_create({{#parameters}} {{parameters}} {{/parameters}});
+	Layer *layer = {{view_name}}_view_get_layer( current->{{&name}} );
+    layer_add_child( parent, layer );
+	{{#hidden}}
+	layer_set_hidden( layer, true );
+	{{/hidden}}
+
+}

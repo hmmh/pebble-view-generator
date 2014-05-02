@@ -1,0 +1,17 @@
+// layer '{{&name}}'
+{	
+	current->{{&name}} = layer_create( (GRect){ .origin = { {{top}}, {{left}} }, .size = { {{width}}, {{height}} } } );
+	{{#hidden}}
+	layer_set_hidden( layer, true );
+	{{/hidden}}
+    {{^is_root_layer}}
+    layer_add_child( parent, current->{{&name}} );
+    {{/is_root_layer}}
+    {
+    	Layer *parent = current->{{&name}};
+        
+    	{{#creators}}
+    	{{&.}}
+    	{{/creators}}
+    }
+}

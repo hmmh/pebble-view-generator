@@ -1,0 +1,224 @@
+{
+  "name": "Pebble View",
+  "scopeName": "source.pview",
+  "fileTypes": [
+    "pview"
+  ],
+  "patterns": [
+    {  "comment": "closing brace",
+       "name": "keyword",
+       "match": "\\]"
+    },
+    {
+      "comment": "matches a the view element",
+      "name": "keyword",
+      "begin": "\\s*?(view)\\s+",
+      "beginCaptures": {
+        "1": { "name": "keyword" }
+      },
+      "patterns": [
+        { "include": "#id" },
+        { "include": "#parameters" }
+      ],
+      "end": "(\\[)"
+    },
+    {
+      "comment": "matches a the subview element",
+      "name": "keyword",
+      "begin": "\\s*?(subview)\\s+",
+      "beginCaptures": {
+        "1": { "name": "keyword" }
+      },
+      "patterns": [
+        { "include": "#identifier" },
+        { "include": "#id" },
+        { "include": "#parameters" },
+        { "include": "#hidden" }
+      ],
+      "end": "(;|\\n|\\[)"
+    },
+    {
+      "comment": "matches a the layer element",
+      "name": "keyword",
+      "begin": "\\s*?(layer)\\s+",
+      "beginCaptures": {
+        "1": { "name": "keyword" }
+      },
+      "patterns": [
+        { "include": "#id" },
+        { "include": "#dimensions" },
+        { "include": "#hidden" }
+      ],
+      "end": "(;|\\n|\\[)"
+    },
+    {
+      "comment": "matches a the bitmap element",
+      "name": "keyword",
+      "begin": "\\s*?(bitmap)\\s+",
+      "beginCaptures": {
+        "1": { "name": "keyword" }
+      },
+      "patterns": [
+        { "include": "#resourceid" },
+        { "include": "#id" },
+        { "include": "#dimensions" },
+        { "include": "#hidden" }
+      ],
+      "end": "(;|\\n)"
+    },
+    {
+      "comment": "matches a the font element",
+      "name": "keyword",
+      "begin": "\\s*?(font)\\s+",
+      "beginCaptures": {
+        "1": { "name": "keyword" }
+      },
+      "patterns": [
+        { "include": "#resourceid" },
+        { "include": "#id" }
+      ],
+      "end": "(;|\\n)"
+    },
+    {
+      "comment": "matches a the inverter element",
+      "name": "keyword",
+      "begin": "\\s*?(inverter)\\s+",
+      "beginCaptures": {
+        "1": { "name": "keyword" }
+      },
+      "patterns": [
+        { "include": "#id" },
+        { "include": "#dimensions" },
+        { "include": "#hidden" }
+      ],
+      "end": "(;|\\n)"
+    },    
+    {
+      "comment": "matches a the text element",
+      "name": "keyword",
+      "begin": "\\s*?(text)\\s+",
+      "beginCaptures": {
+        "1": { "name": "keyword" }
+      },
+      "patterns": [
+        { "include": "#string" },
+        { "include": "#variable" },
+        { "include": "#id" },
+        { "include": "#dimensions" },
+        { "include": "#using_font" },
+        { "include": "#color" },
+        { "include": "#hidden" }
+      ],
+      "end": "(;|\\n)"
+    },    
+    {
+      "match": "\\s*#.*",
+      "name": "comment.line",
+      "comment": "comments"
+    }
+  ],
+  "repository": {
+    "parameters": {  
+       "name": "keyword",
+       "match": "(?<=\\s)(with parameters)\\s+\\(([^\\)]*?)\\)(?=\\s)",
+       "captures": {
+          "1": { "name": "keyword" },
+          "2": { "name": "variable" }
+       }
+    },
+    "identifier" : {  
+       "name": "variable",
+       "match": "(?<=\\s)('[a-zA-Z][a-zA-Z0-9_]*')(?=\\s)"
+    },
+    "id": {
+      "name": "keyword",
+      "match": "(as)\\s+('[a-zA-Z][a-zA-Z0-9_]*')(?=\\s|;)",
+      "captures": {
+        "1": {
+          "name": "keyword"
+        },
+        "2" : {
+          "name": "variable"          
+        }
+      }
+    },
+    "string" : {  
+       "name": "string",
+       "match": "\"([^\"]|\\\")*?\""
+    },
+    "resourceid": {
+      "name": "constant",
+      "match": "(?<=\\s)[A-Z][A-Z0-9_]*\\s+"
+    },
+    "variable" : {
+      "match": "(?<=\\s)\\$[a-zA-Z][a-zA-Z0-9_]*?((->|.)[a-zA-Z][a-zA-Z0-9_]*)?(?=\\s)",
+      "name": "variable.language",
+      "comment": "first class syntax element"      
+    },
+    "hidden": {
+      "comment" : "optional keyword that indicates, that a element should be created in a hidden state.",
+      "name" : "keyword",
+      "match" : "(?<=\\s)hidden(?=\\s|;)"
+    },
+    "color": {  
+      "comment":"foreground and optional background definition",
+      "name": "keyword.control.untitled",
+       "match": "(?<=\\s)(black|white|clear)(?:\\s+(on)\\s+(black|white|clear))?(?=\\s|;)",
+       "captures": {
+           "1": { "name": "constant" },
+           "2": { "name": "keyword" },
+           "3": { "name": "constant" }
+       }
+    },
+    "using_font": {
+      "comment": "font selection",
+      "name": "keyword",
+      "match": "(using font)\\s+('[a-zA-Z][a-zA-Z0-9_]*')(?=\\s|;)",
+       "captures": {
+           "1": { "name": "keyword" },
+           "2": { "name": "variable" }
+       }
+    },
+    "dimensions": {
+      "name" : "keyword",
+      "begin" : "\\(",
+      "comment": "",
+      "patterns": [
+        {  "name": "keyword",
+           "match": "\\s*(width:)(\\d+)(?=\\s)",
+           "comment" : "",
+           "captures": {
+               "1": { "name": "keyword" },
+               "2": { "name": "constant.numeric" }
+           }
+        },
+        {  "name": "keyword",
+           "match": "\\s*(height:)(\\d+)(?=\\s)",
+           "comment" : "",
+           "captures": {
+               "1": { "name": "keyword" },
+               "2": { "name": "constant.numeric" }
+           }
+        },
+        {  "name": "keyword",
+           "match": "\\s*(top:)(-?\\d+)(?=\\s)",
+           "comment" : "",
+           "captures": {
+               "1": { "name": "keyword" },
+               "2": { "name": "constant.numeric" }
+           }
+        },
+        {  "name": "keyword",
+           "match": "\\s*(left:)(-?\\d+)(?=\\s|\\))",
+           "comment" : "",
+           "captures": {
+               "1": { "name": "keyword" },
+               "2": { "name": "constant.numeric" }
+           }
+        }        
+      ],
+      "end" : "\\)"
+    }
+  },
+  "uuid": "518cc445-c0b0-494e-8ca0-9c3475b7eab6"
+}

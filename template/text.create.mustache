@@ -1,0 +1,17 @@
+// text layer '{{&name}}'
+{	
+	current->{{&name}} = text_layer_create( (GRect){ .origin = { {{top}}, {{left}} }, .size = { {{width}}, {{height}} } } );
+	Layer *layer = text_layer_get_layer( current->{{&name}} );
+	text_layer_set_font( current->{{&name}}, current->{{&font}} );
+	text_layer_set_text( current->{{&name}}, {{&variable}}{{#string}}"{{&string}}"{{/string}} );
+	{{#hidden}}
+	layer_set_hidden( layer, true );
+	{{/hidden}}
+	{{#background}}
+	text_layer_set_background_color( current->{{&name}}, {{background}} );
+	{{/background}}
+	{{#foreground}}
+	text_layer_set_text_color( current->{{&name}}, {{foreground}} );
+	{{/foreground}}
+	layer_add_child( parent, layer );
+}
