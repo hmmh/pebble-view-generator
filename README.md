@@ -27,7 +27,7 @@ corresponds to the following C code
 
 ## Usage
 
-We organize our code into views and subviews. Views are basically containers for a group of closely related interface components. As the other pebble user interface components, views will expose at least an ````*_create````, ````*_delete```` and ````*_get_layer```` function.
+We organize our code into views and subviews. Views are basically containers for a group of closely related interface components. As the other pebble user interface components, views will expose at least an ````*_create````, ````*_destroy```` and ````*_get_layer```` function.
 
 Every view has to be defined in an seperate pview file.
 

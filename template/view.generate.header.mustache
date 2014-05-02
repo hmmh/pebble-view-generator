@@ -9,7 +9,7 @@
 
 {{#identifiers}}
 {{#subview}}
-struct {{&type}};
+struct {{&type}}View;
 {{/subview}}
 {{/identifiers}}
 
@@ -18,6 +18,9 @@ typedef struct {{name_in_camel_case}}View {
 	{{#layer}}
 	Layer *{{.}};
 	{{/layer}}
+	{{#inverter}}
+	InverterLayer *{{.}};
+	{{/inverter}}
 	{{#text}}
 	TextLayer *{{.}};
 	{{/text}}
@@ -29,7 +32,7 @@ typedef struct {{name_in_camel_case}}View {
 	GFont {{.}};
 	{{/font}}
 	{{#subview}}
-	struct {{&type}} *{{&name}};
+	struct {{&type}}View *{{&name}};
 	{{/subview}}
 	{{/identifiers}}
 } {{name_in_camel_case}}View;

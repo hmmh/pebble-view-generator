@@ -68,7 +68,7 @@
 ([A-Z]+[_A-Z0-9]*)		        											  { return 'RESOURCE'; }
 "["                                             							  { return 'BRACE_OPEN'; }
 "]"                                             							  { return 'BRACE_CLOSE'; }
-"("\s*?"width:"(\d+)\s+"height:"(\d+)\s+"top:"(\d+)\s+"left:"(\d+)\s*?")"     { return 'POSITION_AND_DIMENSION'; }
+"("\s*?"width:"(\d+)\s+"height:"(\d+)\s+"top:"(\-?\d+)\s+"left:"(\-?\d+)\s*?")"     { return 'POSITION_AND_DIMENSION'; }
 "black"                                               						  { return 'COLOR_BLACK'; }
 "white"                                                          			  { return 'COLOR_WHITE'; }
 "clear"																		  { return 'COLOR_CLEAR'; }
