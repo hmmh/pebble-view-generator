@@ -1,6 +1,5 @@
 {
   "name": "pgenview",
-  "private" : true,
   "version": "0.0.1",
   "bin": { "pgenview": "bin/pgenview-cli" },
   "description": "View Code Generator for Pebble",
