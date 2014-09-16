@@ -2,7 +2,7 @@ A Pebble View Generator
 =======================
 
 ## Introduction
-Writing UI code can be quite repetitive and tiresome. While working on our latest project for the pebble smartwatch we created a tool that eased some of the burdens by generating C source from a simple formatting language. 
+Writing UI code can be quite repetitive and tiresome. While working on our latest project for the pebble smartwatch we created (read: hacked!) a tool that eased some of the burdens by generating C source from a simple formatting language. 
 
 This line of a pview script
 
@@ -27,7 +27,7 @@ corresponds to the following C code
 
 ## Usage
 
-We organize our code into views and subviews. Views are basically containers for a group of closely related interface components. As the other pebble user interface components, views will expose at least an ````*_create````, ````*_delete```` and ````*_get_layer```` function.
+We organize our code into views and subviews. Views are basically containers for a group of closely related interface components. As the other pebble user interface components, views will expose at least a ````*_create````, ````*_delete```` and ````*_get_layer```` function.
 
 Every view has to be defined in an seperate pview file.
 
@@ -70,7 +70,7 @@ void a_simple_demo_view_destroy( ASimpleDemoView *current );
 
 ````
 
-For a detailed documentation of the pview script syntax plase have a look at our [wiki](https://github.com/hmmh/pebble-view-generator/wiki/).
+For a detailed documentation of the pview script syntax please have a look at our [wiki](https://github.com/hmmh/pebble-view-generator/wiki/).
 
 ## Installation
 
